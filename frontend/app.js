@@ -1,21 +1,16 @@
-// Configuration
 const API_BASE_URL = 'https://localhost:7237'; // Updated to match your API port
-
-// DOM Elements
+s
 const loadStatsBtn = document.getElementById('loadStatsBtn');
 const loading = document.getElementById('loading');
 const error = document.getElementById('error');
 const playerStats = document.getElementById('playerStats');
 
-// Event Listeners
 loadStatsBtn.addEventListener('click', loadPlayerStats);
 
-// Main function to load player statistics
 async function loadPlayerStats() {
     showLoading();
     
     try {
-        // Call your new players endpoint to get real data
         const response = await fetch(`${API_BASE_URL}/api/automations/players`, {
             method: 'GET',
             headers: {
@@ -30,7 +25,6 @@ async function loadPlayerStats() {
         const players = await response.json();
         console.log('API Response:', players);
         
-        // Display the real player data
         displayPlayerData(players);
         
     } catch (err) {
@@ -41,7 +35,6 @@ async function loadPlayerStats() {
     }
 }
 
-// Display player data in cards
 function displayPlayerData(players) {
     playerStats.innerHTML = '';
     
@@ -51,7 +44,6 @@ function displayPlayerData(players) {
     });
 }
 
-// Create a player card element
 function createPlayerCard(player, rank) {
     const col = document.createElement('div');
     col.className = 'col-md-6 col-lg-4';
@@ -73,7 +65,6 @@ function createPlayerCard(player, rank) {
     return col;
 }
 
-// UI Helper Functions
 function showLoading() {
     loading.classList.remove('d-none');
     error.classList.add('d-none');
@@ -91,5 +82,4 @@ function showError() {
     loading.classList.add('d-none');
 }
 
-// Optional: Load data automatically when page loads
-// window.addEventListener('load', loadPlayerStats);
+

@@ -32,7 +32,6 @@ namespace crudApp.Services.AutomationService
             HtmlDocument htmlDocument = new();
             htmlDocument.LoadHtml(html);
 
-            // Since the data is likely in JSON or embedded in the HTML, let's try regex approach
             // Look for player names and distances in the raw HTML content
             var playerPattern = @"(Aldrich Potgieter|Rory McIlroy|Jesper Svensson|Niklas Norgaard|Michael Thorbjornsen|Nicolai Højgaard|Kurt Kitayama|Chris Gotterup|Rasmus Højgaard|Will Gordon|Trevor Cone| Keith Mitchell| Alejandro Tosti| Min Woo Lee| Wyndham Clark| Xander Schauffele| J.J Spaun| Sahith Theegala).*?(\d{3}\.\d)";
             var matches = System.Text.RegularExpressions.Regex.Matches(html, playerPattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
@@ -49,7 +48,7 @@ namespace crudApp.Services.AutomationService
                         var distance = double.Parse(m.Groups[2].Value);
                         return distance >= 250 && distance <= 400; // Realistic driving distances
                     })
-                    .Take(10); // Limit to first 10
+                    .Take(10); 
                 
                 Console.WriteLine($"Found {filteredMatches.Count()} player-distance pairs");
                 
@@ -112,9 +111,9 @@ namespace crudApp.Services.AutomationService
                 var filteredMatches = matches.Cast<System.Text.RegularExpressions.Match>()
                     .Where(m => {
                         var distance = double.Parse(m.Groups[2].Value);
-                        return distance >= 250 && distance <= 400; // Realistic driving distances
+                        return distance >= 250 && distance <= 400; 
                     })
-                    .Take(50); // Get more players
+                    .Take(50); 
                 
                 foreach (var match in filteredMatches)
                 {
