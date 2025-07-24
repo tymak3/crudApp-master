@@ -1,5 +1,4 @@
 const API_BASE_URL = 'https://localhost:7237'; // Updated to match your API port
-s
 const loadStatsBtn = document.getElementById('loadStatsBtn');
 const loading = document.getElementById('loading');
 const error = document.getElementById('error');
